@@ -159,17 +159,17 @@ function Viewcontact() {
             {user.firstName?.slice(0, 1).toUpperCase()}
           </div>
           {user.firstName && (
-            <div className="text-white text-4xl font-semibold">
+            <div className="text-white text-xl md:text-4xl font-semibold">
               {user.firstName} {user.middleName} {user.lastName}
             </div>
           )}
           {user.email && (
-            <div className="text-white mt-4 text-2xl font-thin">
+            <div className="text-white mt-4 text-lg md:text-2xl font-thin">
               {user.email}
             </div>
           )}
           {user.phoneNumber1 && (
-            <div className="text-white mt-4 items-center flex text-2xl font-thin">
+            <div className="text-white mt-4 items-center flex text-lg md:text-2xl font-thin">
               <img
                 className="-rotate-90"
                 width="30"
@@ -181,7 +181,7 @@ function Viewcontact() {
             </div>
           )}
           {user.phoneNumber2 && (
-            <div className="text-white mt-4 items-center flex text-2xl font-thin">
+            <div className="text-white mt-4 items-center flex text-lg md:text-2xl font-thin">
               <img
                 className="-rotate-90"
                 width="30"
@@ -193,7 +193,7 @@ function Viewcontact() {
             </div>
           )}
           {user.address && (
-            <div className="text-white mt-4 items-center flex text-2xl font-thin">
+            <div className="text-white mt-4 items-center flex text-lg md:text-2xl font-thin">
               <img
                 width="30"
                 height="30"
