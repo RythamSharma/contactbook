@@ -71,7 +71,7 @@ function Navbar({ setSearchQuery, queryChange, searchQuery,setPage }) {
           </button>
           <button
             onClick={handleLogout}
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-2 md:px-3 py-1.5 md:me-2 mb-2 dark:bg-gray-900 md:ml-2 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-800"
+            className="text-gray-900 hover:text-blue-500 focus:outline-none  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-2 md:px-3 py-1.5 md:me-0 mb-2 dark:bg-gray-800 underline md:ml-0 dark:text-white dark:hover:border-gray-600 dark:focus:ring-gray-800"
           >
             Logout
           </button>

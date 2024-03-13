@@ -58,7 +58,7 @@ function Viewcontact() {
           },
         }
       );
-      setAlert(response.data.message); // Assuming you want to log the response data
+      setAlert(response.data.message);
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -90,7 +90,7 @@ function Viewcontact() {
     <div className="flex flex-row items-center justify-between ">
       <div className="h-[100vh] bg-gray-800 w-[100vw] md:w-[50vw]">
         <h1 className="  text-3xl font-semibold float-left mt-5 ml-5 text-white">
-          Contact
+          Contact<span className="text-blue-500" >U</span>
         </h1>
         {alert ? (
           <p className="fixed top-14 left-[45vw] text-green-500">{alert}</p>
@@ -111,8 +111,8 @@ function Viewcontact() {
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="30"
-            height="30"
+            width="25"
+            height="25"
             onClick={changeediting}
             className={`cursor-pointer`}
             viewBox="0,0,256,256"
@@ -143,8 +143,8 @@ function Viewcontact() {
           className={`p-2 rounded-full float-right mr-0 mt-5 hover:bg-black `}
         >
           <img
-            width="32"
-            height="32"
+            width="25"
+            height="25"
             src="https://img.icons8.com/ios/50/ffffff/delete-trash.png"
             alt="delete-trash"
           />
@@ -212,7 +212,7 @@ function Viewcontact() {
           <form
             className={`flex-col ${
               editing ? "flex" : "hidden"
-            } items-center mt-[7vh]`}
+            } items-center mt-[7vh] mr-9`}
           >
             <div className="text-white rounded-full bg-blue-400 w-24 h-24  text-5xl flex items-center justify-center mr-3">
               {user.firstName?.slice(0, 1).toUpperCase()}
@@ -222,7 +222,7 @@ function Viewcontact() {
               <input
                 type="text"
                 id="fname"
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[28vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[28vw] mt-0  focus:outline-none p-3 text-white"
                 value={user.firstName}
                 onChange={(e) => {
                   setUser({ ...user, firstName: e.target.value });
@@ -235,7 +235,7 @@ function Viewcontact() {
                 type="text"
                 id="mname"
                 value={user.middleName}
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[28vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[28vw] mt-0  focus:outline-none p-3 text-white"
                 onChange={(e) => {
                   setUser({ ...user, middleName: e.target.value });
                 }}
@@ -247,7 +247,7 @@ function Viewcontact() {
                 id="lname"
                 type="text"
                 value={user.lastName}
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[28vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[28vw] mt-0  focus:outline-none p-3 text-white"
                 onChange={(e) => {
                   setUser({ ...user, lastName: e.target.value });
                 }}
@@ -263,7 +263,7 @@ function Viewcontact() {
               <input
                 type="text"
                 value={user.email}
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
                 onChange={(e) => {
                   setUser({ ...user, email: e.target.value });
                 }}
@@ -280,7 +280,7 @@ function Viewcontact() {
               <input
                 type="text"
                 value={user.phoneNumber1}
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
                 onChange={(e) => {
                   setUser({ ...user, phoneNumber1: e.target.value });
                 }}
@@ -297,7 +297,7 @@ function Viewcontact() {
               <input
                 type="text"
                 value={user.phoneNumber2}
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
                 onChange={(e) => {
                   setUser({ ...user, phoneNumber2: e.target.value });
                 }}
@@ -312,7 +312,7 @@ function Viewcontact() {
               />
               <input
                 type="text"
-                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-full md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
+                className="bg-transparent focus:border-blue-600 transition-colors duration-150 border-b  w-[80vw] md:w-[26vw] mt-0  focus:outline-none p-3 text-white"
                 value={user.address}
                 onChange={(e) => {
                   setUser({ ...user, address: e.target.value });
