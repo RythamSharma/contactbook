@@ -17,7 +17,7 @@ ContactU is a web-based contact book application developed to help users manage 
 - **Frontend**: React
 - **Backend**: Node.js, Express
 - **Database**: MySQL
-- **Deployment**: Docker, Render.com (Backend), Vercel (Frontend)
+- **Deployment**: Docker
 
 ## Usage
 
@@ -50,12 +50,6 @@ ContactU is a web-based contact book application developed to help users manage 
 1. Set up environment variables for backend configuration, including database connection details, Access token secret, etc.
 2. Configure environment variables for frontend, including API endpoints.
 
-## Deployment
-
-1. Build the frontend application: `npm run build`
-2. Dockerize the backend application.
-3. Deploy the Docker container on Render.com.
-4. Deploy the frontend application on Vercel.
 
 ## Contributors
 
