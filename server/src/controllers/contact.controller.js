@@ -18,13 +18,13 @@ const createContact = asyncHandler(async (req, res) => {
   } = req.body;
 
   if (!firstName || !lastName || !email || !phoneNumber1 || !userId) {
-    throw new ApiError(400, "Required fields are missing");
+    return res.status(400).json({"message": "Required fields are missing"})
   }
   const existingContact = await prisma.contact.findFirst({
     where: { email },
   });
   if (existingContact) {
-    throw new ApiError(400, "Email is already associated with another contact");
+    return res.status(400).json({"message": "Email is already associated with another contact"})
   }
 
   const createdContact = await prisma.contact.create({
@@ -106,10 +106,7 @@ const editcontact = asyncHandler(async (req, res) => {
       where: { email, NOT: { id: Number(contactId) } },
     });
     if (existingContact) {
-      throw new ApiError(
-        400,
-        "Email is already associated with another contact"
-      );
+      return res.status(400).json({"message": "Email is already associated with another contact"})
     }
   }
 
@@ -131,8 +128,7 @@ const editcontact = asyncHandler(async (req, res) => {
 
 const searchcontact = asyncHandler(async (req, res) => {
   const userId = req.user.id;
-  const { searchQuery = "", page = 1, pageSize = 10 } = req.query;
-  const skip = (page - 1) * pageSize;
+  const { searchQuery = "" } = req.query;
 
   const contacts = await prisma.contact.findMany({
     where: {
@@ -147,9 +143,7 @@ const searchcontact = asyncHandler(async (req, res) => {
         { address: { contains: searchQuery } },
       ],
     },
-    orderBy: { firstName: "asc" },
-    skip,
-    take: Number(pageSize),
+    orderBy: { firstName: "asc" }
   });
 
   if (!contacts || contacts.length === 0) {
@@ -183,10 +177,30 @@ const softdeletecontact = asyncHandler(async (req, res) => {
     );
 });
 
+
+  const getContactbyId = asyncHandler(async(req,res)=>{
+    const contactId = req.params.contactId;
+    if(!contactId){
+      throw new ApiError(400, "Contact ID is required")
+    }
+    const Contact = await prisma.contact.findFirst({
+      where: { id: Number(contactId) },
+    });
+    if (!Contact) {
+      throw new ApiError(404, "Contact not found");
+    }
+    res
+      .status(200)
+      .json(
+        new ApiResponse(200, { Contact }, "Contact retrieved successfully")
+      );
+  })
+
 export {
   createContact,
   getallcontacts,
   editcontact,
   searchcontact,
   softdeletecontact,
+  getContactbyId
 };

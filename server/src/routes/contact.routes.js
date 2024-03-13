@@ -5,6 +5,7 @@ import {
   editcontact,
   searchcontact,
   softdeletecontact,
+  getContactbyId
 } from "../controllers/contact.controller.js";
 import authmiddleware from "../middlewares/auth.middleware.js";
 const router = Router();
@@ -14,6 +15,7 @@ router.route("/getcontacts").get(getallcontacts);
 router.route("/deletecontact/:contactId").delete(softdeletecontact);
 router.route("/querycontacts").get(searchcontact);
 router.route("/create").post(createContact);
+router.route("/getcontact/:contactId").get(getContactbyId);
 router.route("/edit/:contactId").patch(editcontact);
 
 export default router;

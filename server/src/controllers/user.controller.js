@@ -11,6 +11,14 @@ const registerUser = asyncHandler(async (req, res) => {
   if (!email || !username || !password) {
     throw new ApiError(400, "Email, username, and password are required");
   }
+  const existinguser = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+  if(existinguser){
+   return res.status(400).json({"message": "User already exists"})
+  }
   const hashedpassword = await bcrypt.hash(password, 10)
   const createdUser = await prisma.user.create({
     data: {
@@ -39,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    throw new ApiError(400, "Email and password are required");
+    return res.status(400).json({"message": "Email and Password are required"})
   }
   const loggedinuser = await prisma.user.findUnique({
     where: {
@@ -47,11 +55,11 @@ const loginUser = asyncHandler(async (req, res) => {
     },
   });
   if (!loggedinuser) {
-    throw new ApiError(404, "User not found");
+    return res.status(400).json({"message": "User doesn't exists"})
   }
   const match = await bcrypt.compare(password, loggedinuser.password);
   if (!match) {
-    throw new ApiError(401, "Incorrect password");
+    return res.status(400).json({"message": "Incorrect password"})
   }
   const accesstoken = jwt.sign(
     { id: loggedinuser.id, email: loggedinuser.email },
